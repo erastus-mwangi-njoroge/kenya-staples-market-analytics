@@ -1,0 +1,13 @@
+check_id,dimension,description,records_affected,pct_of_records,severity,action_taken
+DQ01,Completeness,"Missing any of critical fields ['date', 'market', 'commodity', 'price']",0,0.0,Pass,Records removed (cannot be analysed)
+DQ02,Completeness,Missing coordinates or admin2 (sub-county/county),68,0.232,Low,Retained; excluded from map views only
+DQ03,Uniqueness,"Duplicate records on key ['date', 'admin1', 'admin2', 'market', 'commodity', 'unit', 'pricetype', 'priceflag']",0,0.0,Pass,"First occurrence kept, rest dropped"
+DQ04,Validity,Non-positive prices,0,0.0,Pass,Records removed
+DQ05,Validity,Coordinates outside Kenya's bounding box,0,0.0,Pass,Coordinates nulled; price retained
+DQ06,Timeliness,Future-dated records,0,0.0,Pass,Records removed
+DQ07,Consistency,"Units that cannot be converted to KG (e.g. litres, pieces)",5998,20.472,Info,Retained; excluded from per-kg indicators
+DQ08,Consistency,Commodities reported in more than one unit,18642,63.629,Info,Prices standardised to KES per KG where unit is weight-based
+DQ09,Accuracy,Price outliers (modified z > 6.0 vs rolling median of own series),672,2.294,Medium,Flagged (is_outlier) and excluded from indicators; retained in data
+DQ10,Completeness,Records in series with < 50% monthly coverage,7818,26.684,High,Retained; series excluded from volatility statistics
+DQ11,Accuracy,Non-'actual' price flags (aggregate/forecast/other),9933,33.903,Info,Forecasts excluded from indicators; aggregates retained
+DQ12,Consistency,Currency other than KES,0,0.0,Pass,Flagged for review; none converted

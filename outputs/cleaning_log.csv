@@ -1,0 +1,7 @@
+step,rows_before,rows_after,rows_changed,rule
+drop_missing_critical,29298,29298,0,"date, market, commodity, price must be present"
+drop_non_positive_price,29298,29298,0,price > 0
+drop_future_dates,29298,29298,0,date <= today
+drop_duplicates,29298,29298,0,"unique on ['date', 'admin1', 'admin2', 'market', 'commodity', 'unit', 'pricetype', 'priceflag']"
+null_invalid_coordinates,29298,29298,0,coordinates inside Kenya bounding box
+flag_outliers,29298,29298,672,flag only; excluded from indicators
